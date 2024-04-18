@@ -1,0 +1,141 @@
+*{
+    padding:0;
+    margin:0;
+}
+
+body{
+    height:1500px;
+}
+
+.skip-main {
+    position: absolute;
+    overflow: hidden;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    font-size: 25px;
+}
+
+.skip-main:focus {
+    position: static;
+    text-align: center;
+    width: auto;
+    height: auto;
+    top: auto;
+    border: 2px solid #301934;
+}
+
+.shell{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+}
+
+header{
+    width:100%;
+    height:500px;
+    overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transition: clip-path 0.5s ease;
+}
+.img{
+    width:100%;
+    height:100%;
+    background:url(../img/2.jpeg);
+    background-size:cover;
+    transform: scale(1);
+    transition: transform 0.5s ease;
+}
+
+.main{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+.main h1{
+    font-size: 50px;
+    margin-bottom: 40px;
+}
+
+.main img{
+    width: 50%;
+}
+.shell2{
+    position: relative;
+    min-width: 1000px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    transform-style: preserve-3d;
+    perspective: 900px;
+}
+
+.shell2 .box{
+    position: relative;
+    width: 200px;
+    height: 300px;
+    transition: .3s;
+    overflow: hidden;
+    margin: 30px;
+    transform:rotateY(0);
+    transition-delay: .1s;
+    border-radius: 5px;
+    border: #fff 5px solid;
+}
+
+
+.shell2 .box .images img{
+    width: 100%;
+    height: 100%;
+}
+
+.shell2:hover .box{
+    transform: rotateY(20deg);
+}
+
+.shell2 .box:hover{
+    transform: rotateY(0deg) scale(1.25);
+    box-shadow: 0 25px 40px rgba(0,0,0,.7);
+    z-index: 1;
+}
+
+.shell2 .box:hover ~ .box{
+    transform: rotateY(-20deg);
+}
+
+.shell2 .box .content{
+    position: absolute;
+    top: 0;
+    width: 90%;
+    height: 100%;
+    z-index: 999;
+    padding: 15px;
+}
+
+.shell2 .box .content h2{
+    color: rgb(255, 255, 255);
+    transition: .3s;
+    font-size: 20px;
+    transform: translateY(-100px);
+}
+
+.shell2 .box:hover .content h2{
+    transform: translateY(-15px);
+}
+
+.shell2 .box .content p{
+    color: #fff;
+    transition: .3s;
+    font-size: 14px;
+    transform: translateY(600px);
+    background-color:rgba(255,255,255,.7);
+}
+
+.shell2 .box:hover .content p{
+    transform: translateY(220px);
+}
+

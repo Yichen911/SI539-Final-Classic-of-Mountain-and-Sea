@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Explore</title>
+</head>
+<body>
+    <a href="#main" class="skip-main">Skip to Main Content</a>
+    <div class="shell">
+        <header>
+            <div class="img"></div>
+        </header>
+    </div>
+    <main id="main">
+        <div class="shell2">
+            <div class ="main">
+                <h1>Old House Gothic</h1>
+            </div>
+            <a href="The Twilight Home.html">
+                <div class="box">
+                    <div class ="images">
+                            <img src="../img/11.jpeg" alt="card#1">
+                    </div>
+                    <div class="content">
+                        <h2>The Twilight Home</h2>
+                        <p>The Olds</p>
+                    </div>
+                </div>
+            </a>
+
+                <a href="The Silent Witness.html">
+                    <div class="box">
+                        <div class ="images">
+                                <img src="../img/22.jpeg" alt="card2">
+                        </div>
+                        <div class="content">
+                            <h2>The Silent Witness</h2>
+                            <p>The Woman</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="The Vanishing Village.html">
+                    <div class="box">
+                        <div class ="images">
+                                <img src="../img/33.jpeg" alt="card#3">
+                        </div>
+                        <div class="content">
+                            <h2>The Twilight Home</h2>
+                            <p>The Village</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="The Vacant Room.html">
+                <div class="box">
+                    <div class ="images">
+                        <img src="../img/44.jpeg" alt="card#1">
+                    </div>
+                    <div class="content">
+                        <h2>The Vacant Room</h2>
+                        <p>The Room</p>
+                    </div>
+                </div>
+                </a>
+
+                <a href="Escape from Utopia.html">
+                    <div class="box">
+                        <div class ="images">
+                            <img src="../img/55.jpeg" alt="card#1">
+                        </div>
+                        <div class="content">
+                            <h2>Escape from Utopia</h2>
+                            <p>The People</p>
+                        </div>
+                    </div>
+                </a>
+        </div>
+    </main>
+</body>
+
+<script>
+    const header = document.querySelector('header');
+    const img = document.querySelector('.img');
+    let scrollDistance = 0;
+    let requestId = null;
+    function updateHeaderClipPath() {
+        const clipPathValue = `polygon(0 0, 100% 0%, 100% ${(scrollDistance <= 600) ? 100 - ((scrollDistance / 600) * 60) : 75}%, 0% 100%)`;
+        header.style.clipPath = clipPathValue;
+        const scaleValue = 1 + ((scrollDistance / 600) * 1);
+        img.style.transform = `scale(${scaleValue})`;
+        const opacityValue = (scrollDistance / 600);
+        }
+    function scrollHandler(event) {
+        if (event.deltaY < 0){
+            scrollDistance = Math.max(0, scrollDistance + event.deltaY);
+        } else {
+            scrollDistance = Math.min(600, scrollDistance + event.deltaY);
+        }
+        if (!requestId) {
+            requestId = window.requestAnimationFrame(() => {
+                updateHeaderClipPath();
+                requestId = null;
+            });
+        }
+    }
+    window.addEventListener('wheel', scrollHandler);
+</script>
+</html>
