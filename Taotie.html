@@ -133,15 +133,16 @@
 </head>
 <body>
     <main>
-    <ul id="nav">
-        <li class="slide1"></li>
-        <li class="slide2"></li>
-        <li><a href ="explore.html">Home</a></li>
-        <li><a href ="Kitsune.html">Kitsune</a></li>
-        <li><a href ="Fuzhu.html">Fuzhu</a></li>
-        <li><a href ="Pheonix.html">Pheonix</a></li>
-        <li><a href ="Hujiao.html">Hujiao</a></li>
-        <li><a href ="Taotie.html">Taotie</a></li>
+        <ul id="nav">
+            <li class="slide1"></li>
+            <li class="slide2"></li>
+            <li><a href ="explore.html">Home</a></li>
+            <li><a href ="Kitsune.html">Kitsune</a></li>
+            <li><a href ="Fuzhu.html">Fuzhu</a></li>
+            <li><a href ="Pheonix.html">Pheonix</a></li>
+            <li><a href ="Hujiao.html">Hujiao</a></li>
+            <li><a href ="Taotie.html">Taotie</a></li>
+        </ul>
     </main>
     <div class=fuzhu>
         <img class="fuzhu1" src="img/Taotiebook.png" alt="taotiebook1">
@@ -154,26 +155,24 @@
 
     </div>
 
-    </ul>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $("#nav a").on("click",function(){
+            var position = $(this).parent().position();
+            var width = $(this).parent().width();
+            $("#nav .slide1").css({ opacity: 1, left: +position.left, width: width});
+        });
+        $("#nav a").on("mouseover",function(){
+            var position = $(this).parent().position();
+            var width = $(this).parent().width();
+            $("#nav .slide2").css({ opacity: 1, left: +position.left, width: width}).addClass("squeeze");
+        });
+        $("#nav a").on("mouseout",function(){
+            $("#nav .slide2").css({ opacity: 0}.removeClass("squeeze"));
+        });
+        var currentWidth = $("#nav li:nth-of-type(3) a").parent("li").append();
+        var current = $("li:nth-of-type(3) a").position();
+        $("#nav .slide1").css({ left: +current.left, width: currentWidth});
+    </script>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
-    $("#nav a").on("click",function(){
-        var position = $(this).parent().position();
-        var width = $(this).parent().width();
-        $("#nav .slide1").css({ opacity: 1, left: +position.left, width: width});
-    });
-    $("#nav a").on("mouseover",function(){
-        var position = $(this).parent().position();
-        var width = $(this).parent().width();
-        $("#nav .slide2").css({ opacity: 1, left: +position.left, width: width}).addClass("squeeze");
-    });
-    $("#nav a").on("mouseout",function(){
-        $("#nav .slide2").css({ opacity: 0}.removeClass("squeeze"));
-    });
-    var currentWidth = $("#nav li:nth-of-type(3) a").parent("li").append();
-    var current = $("li:nth-of-type(3) a").position();
-    $("#nav .slide1").css({ left: +current.left, width: currentWidth});
-</script>
 </html>
